@@ -5,7 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useState } from 'react';
 
-export default function SignUpForm() {
+export default function SignUpForm({navigation}) {
   const [isFocusedEmail, setIsFocusedEmail] = useState(false);
   const [isFocusedFullName, setIsFocusedFullName] = useState(false)
   const [isFocusedPassword, setIsFocusedPassword] = useState(false)
@@ -19,7 +19,7 @@ export default function SignUpForm() {
       }}>
 
       <View style={{flex: 2,flexDirection: "row", alignItems: "flex-start", justifyContent: "space-between"}}>
-                <Pressable onPress={() => alert("Back arrow pressed")}>
+                <Pressable onPress={() => navigation.navigate("Login")}>
                 <AntDesign name="arrowleft" size={35} color="black" style={{marginTop: 60, marginLeft: 20}}/> 
                 </Pressable>
               <Image source={require('../assets/orangeThing.png')}/>
@@ -139,7 +139,7 @@ export default function SignUpForm() {
 
       <View style={{flexDirection: "row", alignItems: "center", justifyContent: "center", marginBottom: 25 }}>
         <Text>Already have an account?</Text>
-        <Pressable onPress={() => alert("Sign in text clicked")}>
+        <Pressable onPress={() => navigation.navigate("Login")}>
           <Text style={{ fontWeight: "bold", color: "rgb(251, 184, 77)", marginLeft: 5 }}>Sign in</Text>
         </Pressable>
       </View>

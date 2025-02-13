@@ -4,7 +4,7 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import { LinearGradient } from 'expo-linear-gradient'
 import { useState } from 'react';
 
-export default function LoginForm() {
+export default function LoginForm({navigation}) {
   const [isFocusedEmail, setIsFocusedEmail] = useState(false);
   const [isFocusedPassword, setIsFocusedPassword] = useState(false);
 
@@ -94,7 +94,7 @@ export default function LoginForm() {
 
       <View style={{flexDirection: "row", alignItems: "center", justifyContent: "center", marginBottom: 25 }}>
         <Text>Don't have an account?</Text>
-        <Pressable onPress={() => alert("Sign up text pressed")}>
+        <Pressable onPress={() => navigation.navigate("SignUp")}>
           <Text style={{ fontWeight: "bold", color: "rgb(251, 184, 77)", marginLeft: 5 }}>Sign up</Text>
         </Pressable>
       </View>
