@@ -1,9 +1,11 @@
-import { Pressable, StyleSheet, Text, View, Image, TextInput, Platform, KeyboardAvoidingView, Keyboard, TouchableWithoutFeedback } from 'react-native';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { Pressable, StyleSheet, Text, View, Image } from 'react-native';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { LinearGradient } from 'expo-linear-gradient'
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useState } from 'react';
+import InputField from './InputFieldPassword';
+import InputFieldConfirmPassword from './InputFieldConfirmPassword';
+import InputFieldEmail from './InputFIeldEmail';
+import InputFieldFullName from './InputFieldFullName';
 
 export default function SignUpForm({navigation}) {
   const [isFocusedEmail, setIsFocusedEmail] = useState(false);
@@ -30,93 +32,13 @@ export default function SignUpForm({navigation}) {
 
 
       <View style={{alignItems: "center", justifyContent: "center", marginTop: -20,}}>
-      <View style={{width: "90%", alignItems: "flex-start", justifyContent: "center", marginLeft: 70}}>
-          {isFocusedFullName ? 
-              <Text style={[styles.label, isFocusedFullName && styles.labelFocused]}>
-                  Full name
-              </Text>
-              :
-              ""
-          }
-        </View>
-        <View style={{width: "90%", flexDirection: "row", alignItems: "center", justifyContent: "flex-start", marginBottom: 15}}>  
-          <TextInput 
-              style={isFocusedFullName ? {...styles.inputFocused} : {...styles.input}} 
-              placeholder= {isFocusedFullName ? "" : "Full name"}
-              onFocus={() => setIsFocusedFullName(true)}
-              onBlur={() => setIsFocusedFullName(false)}
-              placeholderTextColor="rgba(0, 0, 0, 0.3)"
-            />
-          <MaterialIcons name="person-outline" size={24} color="black" style={{position: "absolute", left: 8}}/>
-        </View>
-        <View style={{width: "90%", alignItems: "flex-start", justifyContent: "center", marginLeft: 70}}>
-          {isFocusedEmail ? 
-              <Text style={[styles.label, isFocusedEmail && styles.labelFocused]}>
-                  Email
-              </Text>
-              :
-              ""
-          }
-        </View>
-        <View style={{width: "90%", flexDirection: "row", alignItems: "center", justifyContent: "flex-start", marginBottom: 15}}>  
-          <TextInput 
-              style={isFocusedEmail ? {...styles.inputFocused} : {...styles.input}} 
-              placeholder= {isFocusedEmail ? "" : "Email"}
-              onFocus={() => setIsFocusedEmail(true)}
-              onBlur={() => setIsFocusedEmail(false)}
-              placeholderTextColor="rgba(0, 0, 0, 0.3)"
-            />
-          <FontAwesome name="envelope-o" size={20} color="black" style={{position: "absolute", left: 8}}/>
-        </View>
-        
-        <View style={{width: "90%", alignItems: "flex-start", justifyContent: "center", marginLeft: 70}}>
-          {isFocusedPassword ? 
-              <Text style={[styles.label, isFocusedPassword && styles.labelFocused]}>
-                  Password
-              </Text>
-              :
-              ""
-          }
-        </View>
-       <View style={{...styles.defaultInputContainer}}>
-        <View style={[styles.defaultInputContainerInside]}>
-            <TextInput 
-                style={[styles.input, isFocusedPassword && styles.inputFocused]} 
-                placeholder= {isFocusedPassword ? "" : "Password"}
-                onFocus={() => setIsFocusedPassword(true)}
-                onEndEditing={() => setIsFocusedPassword(false)}
-                placeholderTextColor="rgba(0, 0, 0, 0.3)"
-                secureTextEntry
-              />
-            <AntDesign name="lock" size={24} color="black" style={{position: "absolute", left: 7}}/>
-        </View>
-        </View> 
-
-        <View style={{width: "90%", alignItems: "flex-start", justifyContent: "center", marginLeft: 70}}>
-          {isFocusedConfirm ? 
-              <Text style={[styles.label, isFocusedConfirm && styles.labelFocused]}>
-                  Confirm password
-              </Text>
-              :
-              ""
-          }
-        </View>
-       <View style={{...styles.defaultInputContainer}}>
-        <View style={{...styles.defaultInputContainerInside}}>
-            <TextInput 
-                style={[styles.input, isFocusedConfirm && styles.inputFocused]} 
-                placeholder= {isFocusedConfirm ? "" : "Confirm password"}
-                onFocus={() => setIsFocusedConfirm(true)}
-                onEndEditing={() => setIsFocusedConfirm(false)}
-                placeholderTextColor="rgba(0, 0, 0, 0.3)"
-                secureTextEntry
-              />
-            <AntDesign name="lock" size={24} color="black" style={{position: "absolute", left: 7}}/>
-        </View>
-        
-        </View>        
+        <InputFieldFullName isFocusedFullName={isFocusedFullName} setIsFocusedFullName={setIsFocusedFullName}/>
+        <InputFieldEmail isFocusedEmail={isFocusedEmail} setIsFocusedEmail={setIsFocusedEmail}/>
+        <InputField isFocusedPassword = {isFocusedPassword} setIsFocusedPassword = {setIsFocusedPassword}/>
+        <InputFieldConfirmPassword isFocusedConfirm={isFocusedConfirm} setIsFocusedConfirm={setIsFocusedConfirm}/>
       </View>
 
+      
 
       <View style={{flex: 3, flexDirection: "row", alignItems: "flex-start", justifyContent: "flex-end", marginRight: 20, marginTop: 20}}>
         <View style={styles.shadowContainer}>
